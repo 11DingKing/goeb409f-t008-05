@@ -1,0 +1,15 @@
+{
+  "http_addr": ":51326",
+  "monitor_interval": "5s",
+  "settings": {
+    "sync_limits": {
+      "max_phase_angle_deg": 15,
+      "max_frequency_hz": 0.1,
+      "max_voltage_pct": 5
+    },
+    "deviation_threshold": 0.15,
+    "black_start_window": "5m",
+    "diesel_start_window": "10m",
+    "max_breaker_failures": 2
+  }
+}
