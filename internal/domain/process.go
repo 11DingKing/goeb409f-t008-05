@@ -414,6 +414,14 @@ func (p *BlackStartProcess) RestartBlackStart(now time.Time) error {
 	p.syncConfirmations = make(map[Party]SynchronizationCondition)
 	p.syncConfirmedAt = make(map[Party]time.Time)
 	p.BreakerAttempts = 0
+	// The deviation and diesel bookkeeping belongs to the cycle it was recorded
+	// in; the new cycle has to arm and report its own diesel deadline.
+	p.DeviationDetected = false
+	p.DeviationValue = 0
+	p.DeviationDeadline = time.Time{}
+	p.DieselStarted = false
+	p.DieselStartedAt = time.Time{}
+	p.DieselOverdueRecorded = false
 	p.State = StateBlackStartCommanded
 	p.record(now, EventBlackStartRestarted, fmt.Sprintf("cycle=%d", p.Cycle))
 	p.touch(now)
